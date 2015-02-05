@@ -37,6 +37,7 @@ namespace TravelRequirementAppTest
             Assert.AreEqual(text_box.Text, "");
             Assert.IsTrue(submit.Enabled);
             Assert.AreEqual(label.Text, "Destination");
+
         }
         [ClassCleanup]
         public static void TearDown()
