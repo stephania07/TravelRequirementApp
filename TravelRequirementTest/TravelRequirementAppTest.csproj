@@ -63,6 +63,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TravelRequirementApp\TravelRequirementApp.csproj">
+      <Project>{35fc8f85-bde9-4776-b041-89c27d7659df}</Project>
+      <Name>TravelRequirementApp</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
