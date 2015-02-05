@@ -34,8 +34,8 @@ namespace TravelRequirementAppTest
             Button submit = window.Get<Button>("SubmitButton");
 
             Assert.IsTrue(text_box.Enabled);
-            Assert.AreEqual(text_box.Text, "Enter a Country");
-            Assert.IsFalse(submit.Enabled);
+            Assert.AreEqual(text_box.Text, "");
+            Assert.IsTrue(submit.Enabled);
             Assert.AreEqual(label.Text, "Destination");
         }
         [ClassCleanup]
