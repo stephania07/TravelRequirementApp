@@ -10,20 +10,24 @@ using TestStack.White.UIItems.WindowItems;
 namespace TravelRequirementAppTest
 {
     [TestClass]
-    public class UITests
+    public class UITests : TestHelper
     {
-        private static TestContext test_context;
-        private static Window window;
-        private static Application application;
-
         [ClassInitialize]
-        public static void Setup(TestContext _context)
+        public static void SetupTests(TestContext _context)
         {
-            test_context = _context;
-            var applicationDir = _context.DeploymentDirectory;
-            var applicationPath = Path.Combine(applicationDir, "..\\..\\..\\TravelRequirementTest\\bin\\Debug\\TravelRequirementApp");
-            application = Application.Launch(applicationPath);
-            window = application.GetWindow("MainWindow", InitializeOption.NoCache);
+            TestHelper.SetupClass(_context);
+                    
+        }
+        [TestInitialize]
+        public void SetupTests()
+        {
+            TestHelper.TestPrep();
+        }
+
+        [TestCleanup]
+        public void CleanUp()
+        {
+            TestHelper.CleanThisUp();
         }
         
         [TestMethod]
@@ -39,12 +43,6 @@ namespace TravelRequirementAppTest
             Assert.AreEqual(label.Text, "Destination");
 
         }
-        [ClassCleanup]
-        public static void TearDown()
-        {
-            window.Close();
-            application.Close();
         
-        }
     }
 }
