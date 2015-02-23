@@ -9,7 +9,7 @@ namespace TravelRequirementAppTest
     {
         //As a user
         //In order to travel whenever I want
-        // I want to see their visa validity regulation
+        // I want to see the travel requirements according to my destination
         [ClassInitialize]
         public static void Setup(TestContext _context)
         {
@@ -19,11 +19,11 @@ namespace TravelRequirementAppTest
         [TestInitialize]
         public void SetupTests()
         {
-            //GivenThereAreNoFilledDestination(
-            //    new DestinyInfo("Australia", "Six month"),
-            //    new DestinyInfo("France", "three month")
-            //);
-            //TestHelper.TestPrep();
+            GivenTheseSelectedDestinations(
+                new DestinyInfo("Australia", "six month visa", "must be declared", "None", "Yes"),
+                new DestinyInfo("France", "three month", "must be declared", "None", "Yes")
+            );
+            TestHelper.TestPrep();
         }
 
         [TestCleanup]
@@ -33,11 +33,12 @@ namespace TravelRequirementAppTest
         }
 
         [TestMethod]
-        public void ScenarioViewingDestinationSearchWwhenDestinationIsSelected()
+        public void ScenarioViewingDestinationListWhenThereAreSelectedDestinations()
         {
-           // ThenIShouldSeeXDestination(1);
+           // ThenIShouldSeeXDestinations();
            // AndIShouldSeeListFor("Australia", "Six month");
-               
+           // AndIShouldSeeListFor("France", "Three month");
+           //AndIShouldNotSeeTheDestinyInfoForm();   
         }
     }
 }

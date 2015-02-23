@@ -14,11 +14,10 @@ namespace TravelRequirementApp.Repository
         void Add(DestinyInfo D);
         void Delete(DestinyInfo D);
         void Clear();
-        IEnumerable<DestinyInfo> PastDestinations();
         IEnumerable<DestinyInfo> All();
         DestinyInfo GetById(int id);
-        DestinyInfo GetByName(string name);
-        IQueryable<DestinyInfo> SearchFor(Expression<Func<DestinyInfo, bool>> predicate);
+        DestinyInfo GetByDestination(string destination);
+        
 
     }
 }

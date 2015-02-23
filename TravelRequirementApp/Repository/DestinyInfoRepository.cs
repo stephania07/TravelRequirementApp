@@ -51,11 +51,7 @@ namespace TravelRequirementApp.Repository
             _dbContext.Destinations.RemoveRange(a);
             _dbContext.SaveChanges();
         }
-        
-        public IEnumerable<DestinyInfo> PastDestinations()
-        {
-            throw new NotImplementedException();
-        }
+       
         
         public  IEnumerable<DestinyInfo> All()
         {
@@ -64,17 +60,20 @@ namespace TravelRequirementApp.Repository
         }
         public DestinyInfo GetById(int id)
         {
-            throw new NotImplementedException();
+            var query = from DestinyInfo in _dbContext.Destinations
+                        where DestinyInfo.DestinyInfoId == id
+                        select DestinyInfo;
+            return query.First<Model.DestinyInfo>();
         }
 
-        public DestinyInfo GetByName(string name)
+        public Model.DestinyInfo GetByDestination(string destination)
         {
-            throw new NotImplementedException();
-        }
+            var query = from DestinyInfo in _dbContext.Destinations
+                        where DestinyInfo.Destination == destination
+                        select DestinyInfo;
+            return query.First<Model.DestinyInfo>();
 
-        public IQueryable<DestinyInfo> SearchFor(Expression<Func<DestinyInfo, bool>> predicate)
-        {
-            throw new NotImplementedException();
+            // throw new NotImplementedException();
         }
 
         public void Dispose()
