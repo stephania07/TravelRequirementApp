@@ -69,6 +69,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Migrations\201502131625080_InitialCreate.cs" />
+    <Compile Include="Migrations\201502131625080_InitialCreate.Designer.cs">
+      <DependentUpon>201502131625080_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502192242342_DestinyInfo.cs" />
+    <Compile Include="Migrations\201502192242342_DestinyInfo.Designer.cs">
+      <DependentUpon>201502192242342_DestinyInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502192353212_DestinyInfo1.cs" />
+    <Compile Include="Migrations\201502192353212_DestinyInfo1.Designer.cs">
+      <DependentUpon>201502192353212_DestinyInfo1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repository\DestinyInfoRepository.cs" />
     <Compile Include="Repository\IDestinyInfoRepository.cs" />
     <Page Include="MainWindow.xaml">
@@ -100,6 +113,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\201502131625080_InitialCreate.resx">
+      <DependentUpon>201502131625080_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502192242342_DestinyInfo.resx">
+      <DependentUpon>201502192242342_DestinyInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502192353212_DestinyInfo1.resx">
+      <DependentUpon>201502192353212_DestinyInfo1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -113,6 +135,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\worldmap.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

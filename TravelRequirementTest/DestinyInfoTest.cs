@@ -10,9 +10,13 @@ namespace TravelRequirementAppTest
         [TestMethod]
         public void CreatingADestinationStoresItsProperties()
         {
-            DestinyInfo country = new DestinyInfo("Australia", "six month visa");
-            Assert.AreEqual("Australia", country.Name );
-            Assert.AreEqual("six month visa", country.passportvalidity );
+            DestinyInfo destinationFacts = new DestinyInfo("Australia", "six month visa", "must be declared", "None", "Yes");
+            Assert.AreEqual("Australia", destinationFacts.Destination);
+            Assert.AreEqual("six month visa", destinationFacts.PassportValidity);
+            Assert.AreEqual("must be declared", destinationFacts.CurrencyRestriction);
+            Assert.AreEqual("None", destinationFacts.Vaccination);
+            Assert.AreEqual("Yes", destinationFacts.TouristVisaRequirement);
+
         }
     }
 }

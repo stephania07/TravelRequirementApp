@@ -6,15 +6,28 @@ namespace TravelRequirementAppTest
     [TestClass]
     public class DestinationSearchTest : TestHelper
     {
-        //As a user
-        //In order to prepare the travel requirements for my trips
-        //I want to get the requirements based on my destination
-        //* Click "Option(v)" to get the dropdown list of destinations(countries)
-        //* Destination must be selected
-        //* Click "Go" to get the result/travel requirements
-        //* It should show error if not selected
-        //* The requirements shows up in the travel requirement list(this is on the second page)
+        //Story: Traveler gets the travel requirements of a destination
 
+        //As a traveler
+        //I want to get the travel requirements of my destination from (DB)
+        //So that I can prepare the requirements before I start my journey
+
+        //Scenario 1: Selected destination is available in DB
+        //Given There is no selected destination
+        //And a traveler selects a destination
+        //And the travel requirements of the selected destination is available in the DB
+       
+        //When the traveler Selects A Destination
+        //Then the destination should be available in the dropdown list
+        //And the destination should be selected
+        //And the Go button should be turned enabled
+        //And then click the Go button
+        //And it should show error if not selected
+        //And the travel requirements list should show up
+        //.......//.......//
+
+        
+ 
         [ClassInitialize]
         public static void SetupTests(TestContext _context)
         {
@@ -36,32 +49,39 @@ namespace TravelRequirementAppTest
         [TestMethod]
         public void DestinationInfo()
         {
-            GivenThereAreNoFilledDestination();
-            ThenIShouldSeeTheDropdownListofDestionation();
-            ThenIShouldSelectFromDropdownListofDestination();
-            WhenIClick("Go");
-            ThenIShouldSeeTheListofDestinationRequirement();
+            GivenThereIsNoSelectedDestination();
+            WhenIClickTheListOption();
+            ThenIShouldSeeTheDestinationInTheDropdownList();
+            ThenIShouldSelectTheDestinationFromTheDropdownList();
+            AndTheGoButtonShouldBeTurnedEnabled();
+            AndIShouldClicktheGoButton("Go");
+            AndIShouldSeeTheTravelRequirementForm("Australia", "six month visa", "must be declared", "None", "Yes");
+            AndIShouldSeeTheListofDestinationRequirement();
         }
-      
+
+        
+
         [TestMethod]
         public void DestinationInfoValidation()
         {
-            GivenThereAreNoFilledDestination();
-            WhenIClick("Go");
-            ThenIShouldSeeTheListofDestinationRequirement();
-            AndIShouldSeeAnErrorMessage("Destination must be filled in");                  
+            GivenThereIsNoSelectedDestination();
+            WhenIClickTheListOption();
+            ThenIShouldSeeTheDestinationInTheDropdownList();
+            AndTheGoButtonShouldBeTurnedEnabled();
+            AndIfNotSelectedIShouldSeeAnErrorMessage("Destination must be selected");
         }
 
         [TestMethod]
-        public void CancelingOutofDestinationRequirementList()
+        public void CancelingOutofDestinationInfoForm()
         {
-            GivenThereAreNoFilledDestination();
-            WhenIClick("Go");
-            TheDestinationPageViewGoesAway();
-            ThenIShouldSeeTheListofDestinationRequirement();
-
-
+            GivenThereIsNoSelectedDestination();
+            WhenIClickTheListOption();
+            ThenIShouldSeeTheDestinationInTheDropdownList();
+            ThenIShouldSelectTheDestinationFromTheDropdownList();
+            AndTheGoButtonShouldBeTurnedEnabled();
+            AndIShouldClicktheGoButton("Go");
+            AndIShouldNotSeeTheDestinationInfo();
+            AndIShouldSeeTheListofDestinationRequirement();
         }
-
-    }
+     }
 }

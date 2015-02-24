@@ -6,15 +6,33 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using TravelRequirementApp.Model;
+using TravelRequirementApp;
 
 namespace TravelRequirementApp.Repository
 {
     public class DestinyInfoRepository : IDestinyInfoRepository
     {
         private DestinationContext _dbContext;
+    
+       public List<string> countries = new List<string> { "Germany", "England", "Australia", "Sweden" };
+        public Dictionary<string, string> Germany = new Dictionary<string, string>();
+        private void PopulateGermany()
+        {
+            Germany.Add("Passport Validity", "six months visa");
+            Germany.Add("Vaccination", "Not Required");
+            Germany.Add("Currency Restriction", "None");
+            Germany.Add("Travel visa Requirement", "None");
+            Germany.Add("Destination", "Germany");
+
+
+        
+        }
+       
+    
 
         public DestinyInfoRepository()
         {
+            PopulateGermany();
             _dbContext = new DestinationContext();
             _dbContext.Destinations.Load();
         }
@@ -51,11 +69,7 @@ namespace TravelRequirementApp.Repository
             _dbContext.Destinations.RemoveRange(a);
             _dbContext.SaveChanges();
         }
-        
-        public IEnumerable<DestinyInfo> PastDestinations()
-        {
-            throw new NotImplementedException();
-        }
+       
         
         public  IEnumerable<DestinyInfo> All()
         {
@@ -64,22 +78,30 @@ namespace TravelRequirementApp.Repository
         }
         public DestinyInfo GetById(int id)
         {
-            throw new NotImplementedException();
+            var query = from DestinyInfo in _dbContext.Destinations
+                        where DestinyInfo.DestinyInfoId == id
+                        select DestinyInfo;
+            return query.First<Model.DestinyInfo>();
         }
 
-        public DestinyInfo GetByName(string name)
+        public Model.DestinyInfo GetByDestination(string destination)
         {
-            throw new NotImplementedException();
-        }
+            var query = from DestinyInfo in _dbContext.Destinations
+                        where DestinyInfo.Destination == destination
+                        select DestinyInfo;
+            return query.First<Model.DestinyInfo>();
 
-        public IQueryable<DestinyInfo> SearchFor(Expression<Func<DestinyInfo, bool>> predicate)
-        {
-            throw new NotImplementedException();
+            // throw new NotImplementedException();
         }
 
         public void Dispose()
         {
             _dbContext.Dispose();
+        }
+
+        public string GetDestinationInfo(string country, string field)
+        {
+            return ""; 
         }
     }
 }

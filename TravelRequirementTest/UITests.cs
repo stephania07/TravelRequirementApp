@@ -5,6 +5,7 @@ using TestStack.White;
 using TestStack.White.Factory;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.WindowItems;
+using TestStack.White.UIItems.ListBoxItems;
 
 
 namespace TravelRequirementAppTest
@@ -33,15 +34,19 @@ namespace TravelRequirementAppTest
         [TestMethod]
         public void TestZeroState()
         {
-            TextBox text_box = window.Get<TextBox>("EnterDestination");
+            TextBox list_box = window.Get<TextBox>("DestinationList");
             Label label = window.Get<Label>("DestinationsLabel");
             Button submit = window.Get<Button>("SubmitButton");
-
-            Assert.IsTrue(text_box.Enabled);
-            Assert.AreEqual(text_box.Text, "");
+            Image worldmap = window.Get<Image>("WorldMap");
+            TextBox titlebox = window.Get<TextBox>("TitleBox");
+           
+            Assert.IsTrue(list_box.Enabled);
+            Assert.AreEqual(list_box.Text, "");
             Assert.IsTrue(submit.Enabled);
             Assert.AreEqual(label.Text, "Destination");
-
+            Assert.IsTrue(worldmap.Visible);
+            Assert.IsTrue(titlebox.IsReadOnly);
+            
         }
         
     }
