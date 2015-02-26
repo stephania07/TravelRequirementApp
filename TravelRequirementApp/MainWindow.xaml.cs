@@ -22,14 +22,14 @@ namespace TravelRequirementApp
             PopulatedCombox();   
         }
 
-        private void HideDestinationInfoElements(string p1, string p2)
+        private void HideDestinationInfoElements()
         {
             DestinationsLabel.Visibility = Visibility.Hidden;
             CountriesList.Visibility = Visibility.Hidden;
             SubmitButton.Visibility = Visibility.Hidden;
             WorldMap.Visibility = Visibility.Hidden;
-            DestinationList.Text = CountriesList.Text + ", " + p2;
-            DestinationList.IsReadOnly = true;
+            //DestinationList.Text = CountriesList.Text + ", " + p2;
+            //DestinationList.IsReadOnly = true;
             Country.Text = CountriesList.Text;
             Dictionary<string, string> Countries = repo.GetDestinationInfo(CountriesList.SelectedValue.ToString());
             PValidty.Text = Countries["Passport Validity"];
@@ -41,15 +41,16 @@ namespace TravelRequirementApp
         private void submitButton_Click(object sender, RoutedEventArgs e)
         {
             TravelReqForm.Visibility = Visibility.Visible;
-            DestinationList.Visibility = Visibility.Visible;
+            TravelList.Visibility = Visibility.Hidden;
             this.countrieslist = CountriesList.Text;
             SubmitButton.IsEnabled = true;
-            HideDestinationInfoElements(CountriesList.Text, "six month visa");
+            HideDestinationInfoElements();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             TravelReqForm.Visibility = Visibility.Hidden;
+            TravelList.Visibility = Visibility.Hidden;
             DestinationsLabel.Visibility = Visibility.Visible;
             CountriesList.Visibility = Visibility.Visible;
             SubmitButton.Visibility = Visibility.Visible;
@@ -61,6 +62,14 @@ namespace TravelRequirementApp
         private void PopulatedCombox()
         {
             CountriesList.ItemsSource = repo.countries;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Dictionary<string, string> Countries = repo.GetDestinationInfo(CountriesList.SelectedValue.ToString());
+            TravelList.Visibility = Visibility.Visible;
+            TravelList.Items.Add(CountriesList.Text);
+            //TravelList.Items.Add(Countries["Passport Validity"]);
         }
 
         }

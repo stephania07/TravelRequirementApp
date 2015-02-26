@@ -34,14 +34,14 @@ namespace TravelRequirementAppTest
         [TestMethod]
         public void TestZeroState()
         {
-            TextBox list_box = window.Get<TextBox>("DestinationList");
+            //TextBox list_box = window.Get<TextBox>("DestinationList");
             Label label = window.Get<Label>("DestinationsLabel");
             Button submit = window.Get<Button>("SubmitButton");
             Image worldmap = window.Get<Image>("WorldMap");
             TextBox titlebox = window.Get<TextBox>("TitleBox");
            
-            Assert.IsTrue(list_box.Enabled);
-            Assert.AreEqual(list_box.Text, "");
+            //Assert.IsTrue(list_box.Enabled);
+            //Assert.AreEqual(list_box.Text, "");
             Assert.IsTrue(submit.Enabled);
             Assert.AreEqual(label.Text, "Destination");
             Assert.IsTrue(worldmap.Visible);

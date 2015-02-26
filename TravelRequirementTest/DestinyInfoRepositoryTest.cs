@@ -39,7 +39,7 @@ namespace TravelRequirementAppTest
         public void TestAddToDatabase()
         {
             Assert.AreEqual(0, repo.GetCount());
-            repo.Add(new DestinyInfo("Australia", "six month visa", "must be declared", "None", "Yes"));
+            repo.Add(new DestinyInfo("Australia", "Must be valid at the time of entry", "None", "None", "Yes"));
             repo.Add(new DestinyInfo("Ghana", "valid at entry time", "must be declared", "Yes", "Yes"));
             repo.Add(new DestinyInfo("Italy", "three month validity", "must be declared", "None", "Yes"));
             Assert.AreEqual(3, repo.GetCount());
@@ -48,7 +48,7 @@ namespace TravelRequirementAppTest
         [TestMethod]
         public void TestAllMethod()
         {
-            repo.Add(new DestinyInfo("Australia", "six month visa", "must be declared", "None", "Yes"));
+            repo.Add(new DestinyInfo("Australia", "Must be valid at the time of entry", "None", "None", "Yes"));
             repo.Add(new DestinyInfo("Bahrain", "six month", "must be declared", "None", "Yes"));
             Assert.AreEqual(2, repo.GetCount());
         }
@@ -63,7 +63,7 @@ namespace TravelRequirementAppTest
         [TestMethod]
         public void TestClear()
         {
-            repo.Add(new DestinyInfo("France", "three month", "must be declared", "None", "Yes"));
+            repo.Add(new DestinyInfo("Germany", "Must be valid for three months", "10,000Euros", "Not required", "Not required"));
             repo.Clear();
             Assert.AreEqual(0, repo.GetCount());
         }
