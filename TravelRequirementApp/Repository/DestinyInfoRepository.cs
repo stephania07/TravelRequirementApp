@@ -18,14 +18,38 @@ namespace TravelRequirementApp.Repository
         public Dictionary<string, string> Germany = new Dictionary<string, string>();
         private void PopulateGermany()
         {
-            Germany.Add("Passport Validity", "six months visa");
+            Germany.Add("Passport Validity", "Must be valid for three months");
             Germany.Add("Vaccination", "Not Required");
-            Germany.Add("Currency Restriction", "None");
-            Germany.Add("Travel visa Requirement", "None");
-            Germany.Add("Destination", "Germany");
-
-
-        
+            Germany.Add("Currency Restriction", "10,000Euros");
+            Germany.Add("Travel Visa Requirement", "Not required");
+            Germany.Add("Destination", "Germany");  
+        }
+        public Dictionary<string, string> England = new Dictionary<string, string>();
+        private void PopulateEngland()
+        {
+            England.Add("Passport Validity", "Must be valid for duration of your stay");
+            England.Add("Vaccination", "Not Required");
+            England.Add("Currency Restriction", "None");
+            England.Add("Travel Visa Requirement", "Not required");
+            England.Add("Destination", "England");
+        }
+        public Dictionary<string, string> Australia = new Dictionary<string, string>();
+        private void PopulateAustralia()
+        {
+            Australia.Add("Passport Validity", "Must be valid at the time of entry");
+            Australia.Add("Vaccination", "None");
+            Australia.Add("Currency Restriction", "None");
+            Australia.Add("Travel Visa Requirement", "Yes");
+            Australia.Add("Destination", "Australia");
+        }
+        public Dictionary<string, string> Sweden = new Dictionary<string, string>();
+        private void PopulateSweden()
+        {
+            Sweden.Add("Passport Validity", "six months visa");
+            Sweden.Add("Vaccination", "Not Required");
+            Sweden.Add("Currency Restriction", "None");
+            Sweden.Add("Travel Visa Requirement", "Yes required");
+            Sweden.Add("Destination", "Sweden");
         }
        
     
@@ -33,6 +57,9 @@ namespace TravelRequirementApp.Repository
         public DestinyInfoRepository()
         {
             PopulateGermany();
+            PopulateEngland();
+            PopulateAustralia();
+            PopulateSweden();
             _dbContext = new DestinationContext();
             _dbContext.Destinations.Load();
         }
@@ -91,7 +118,6 @@ namespace TravelRequirementApp.Repository
                         select DestinyInfo;
             return query.First<Model.DestinyInfo>();
 
-            // throw new NotImplementedException();
         }
 
         public void Dispose()
@@ -99,9 +125,22 @@ namespace TravelRequirementApp.Repository
             _dbContext.Dispose();
         }
 
-        public string GetDestinationInfo(string country, string field)
+        public Dictionary<string, string> GetDestinationInfo(string country )
         {
-            return ""; 
-        }
+            switch (country)
+            {
+                case "Germany":
+                    return Germany;
+                case "England":
+                    return England;
+                case "Australia":
+                    return Australia;
+                case "Sweden":
+                    return Sweden;
+            
+                default:
+                    return null;
+            }
+         }
     }
 }

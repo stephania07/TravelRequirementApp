@@ -23,7 +23,7 @@ namespace TravelRequirementAppTest
         //And the Go button should be turned enabled
         //And then click the Go button
         //And it should show error if not selected
-        //And the travel requirements list should show up
+        //And the travel requirements form should show up
         //.......//.......//
 
         

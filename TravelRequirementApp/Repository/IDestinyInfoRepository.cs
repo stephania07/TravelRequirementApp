@@ -17,7 +17,7 @@ namespace TravelRequirementApp.Repository
         IEnumerable<DestinyInfo> All();
         DestinyInfo GetById(int id);
         DestinyInfo GetByDestination(string destination);
-        string GetDestinationInfo(string country, string field);
+       Dictionary<string, string> GetDestinationInfo(string country);
         
 
     }
