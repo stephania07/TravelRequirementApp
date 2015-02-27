@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TravelRequirementApp.Repository;
 using TravelRequirementApp;
@@ -19,7 +20,9 @@ namespace TravelRequirementAppTest
         [ClassInitialize]
         public static void SetUp(TestContext _context)
         {
-            repo = new DestinyInfoRepository();
+            //Pass the name of the connection string TAG not the
+            //name of the database you want to use
+            repo = new DestinyInfoRepository("Name=TestDB");
             repo.Clear();
         }
 
@@ -66,6 +69,14 @@ namespace TravelRequirementAppTest
             repo.Add(new DestinyInfo("Germany", "Must be valid for three months", "10,000Euros", "Not required", "Not required"));
             repo.Clear();
             Assert.AreEqual(0, repo.GetCount());
+        }
+        [ExpectedException(typeof(ArgumentException))]
+        public void DestinationAreUnique()
+        {
+            repo.Clear();
+            repo.Add(new DestinyInfo("France", "three month", "must be declared", "None", "Yes"));
+            repo.Add(new DestinyInfo("France", "three month", "must be declared", "None", "Yes"));
+
         }
     }
 }

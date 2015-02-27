@@ -28,8 +28,6 @@ namespace TravelRequirementApp
             CountriesList.Visibility = Visibility.Hidden;
             SubmitButton.Visibility = Visibility.Hidden;
             WorldMap.Visibility = Visibility.Hidden;
-            //DestinationList.Text = CountriesList.Text + ", " + p2;
-            //DestinationList.IsReadOnly = true;
             Country.Text = CountriesList.Text;
             Dictionary<string, string> Countries = repo.GetDestinationInfo(CountriesList.SelectedValue.ToString());
             PValidty.Text = Countries["Passport Validity"];
@@ -40,11 +38,19 @@ namespace TravelRequirementApp
 
         private void submitButton_Click(object sender, RoutedEventArgs e)
         {
-            TravelReqForm.Visibility = Visibility.Visible;
-            TravelList.Visibility = Visibility.Hidden;
-            this.countrieslist = CountriesList.Text;
-            SubmitButton.IsEnabled = true;
-            HideDestinationInfoElements();
+            if (CountriesList.Text != "")
+            {
+                TravelReqForm.Visibility = Visibility.Visible;
+                TravelList.Visibility = Visibility.Hidden;
+                this.countrieslist = CountriesList.Text;
+                SubmitButton.IsEnabled = true;
+                HideDestinationInfoElements();
+            }
+            else
+            {
+                MessageBox.Show("Please select your destination", "Error", MessageBoxButton.OK);
+                
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -65,11 +71,27 @@ namespace TravelRequirementApp
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
+         {
+                Dictionary<string, string> Countries = repo.GetDestinationInfo(CountriesList.SelectedValue.ToString());
+                TravelList.Visibility = Visibility.Visible;
+                TravelList.Items.Add(CountriesList.Text);
+                repo.Add(new DestinyInfo(CountriesList.Text, Countries["Passport Validity"], Countries["Currency Restriction"], Countries
+                ["Vaccination"], Countries["Travel Visa Requirement"]));
+                
+          }
+
+        private void Delete(object seender, RoutedEventArgs e)
         {
             Dictionary<string, string> Countries = repo.GetDestinationInfo(CountriesList.SelectedValue.ToString());
-            TravelList.Visibility = Visibility.Visible;
-            TravelList.Items.Add(CountriesList.Text);
-            //TravelList.Items.Add(Countries["Passport Validity"]);
+            TravelList.Items.Remove(CountriesList.Text);
+            repo.Delete(new DestinyInfo(CountriesList.Text, Countries["Passport Validity"], Countries["Currency Restriction"], Countries
+              ["Vaccination"], Countries["Travel Visa Requirement"]));
+
+        }
+
+        private void Edit(object sender, RoutedEventArgs e)
+        {
+
         }
 
         }

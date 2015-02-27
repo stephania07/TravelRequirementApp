@@ -37,9 +37,9 @@
                 <Button Height="18" Width="100" Margin="566,-22,10,0" Click="Button_Click">Cancel</Button>
 
             </StackPanel>
-            <ListBox x:Name="TravelList" Height="200" Width="660" Visibility="Hidden">
-                <Button Height="19" Width="100" Margin="459,-2,123,0">Edit</Button>
-                <Button Height="19" Width="100" Margin="459,-2,123,0">Delete</Button>
+            <ListBox x:Name="TravelList" Height="200" Width="660" >
+                <Button Height="19" Width="100" Margin="459,-2,123,0" Click="Edit">Edit</Button>
+                <Button Height="19" Width="100" Margin="459,-2,123,0" Click="Delete">Delete</Button>
             </ListBox>
             <StackPanel HorizontalAlignment="Center" Width="689" VerticalAlignment="Center" Height="200" Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
                 <Label x:Name="DestinationsLabel" Margin="10,135,10,20"  Width="202" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" FontSize="18" FontWeight="Bold" HorizontalAlignment="Right" FontFamily="Lucida Calligraphy" Content="Destination"/>

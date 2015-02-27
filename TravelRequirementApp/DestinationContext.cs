@@ -10,6 +10,11 @@ namespace TravelRequirementApp
 {
     public class DestinationContext : DbContext
     {
+        public DestinationContext(string connection = "TravelRequirementApp.DestinationContext") : base(connection)
+        { 
+        
+        }
+
        public DbSet<DestinyInfo> Destinations {get; set;} 
     }
 }

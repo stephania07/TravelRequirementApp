@@ -14,7 +14,7 @@ namespace TravelRequirementApp.Repository
     {
         private DestinationContext _dbContext;
     
-       public List<string> countries = new List<string> { "Germany", "England", "Australia", "Sweden" };
+       public List<string> countries = new List<string> { "Germany", "England", "Australia", "Italy", "Sweden" };
         public Dictionary<string, string> Germany = new Dictionary<string, string>();
         private void PopulateGermany()
         {
@@ -42,6 +42,16 @@ namespace TravelRequirementApp.Repository
             Australia.Add("Travel Visa Requirement", "Yes");
             Australia.Add("Destination", "Australia");
         }
+        public Dictionary<string, string> Italy = new Dictionary<string, string>();
+        private void PopulateItaly()
+        {
+            Italy.Add("Passport Validity", "three months validity");
+            Italy.Add("Vaccination", "Not Required");
+            Italy.Add("Currency Restriction", "10,000Euros or equivalent");
+            Italy.Add("Travel Visa Requirement", "Not required");
+            Italy.Add("Destination", "Italy");
+        }
+
         public Dictionary<string, string> Sweden = new Dictionary<string, string>();
         private void PopulateSweden()
         {
@@ -51,16 +61,15 @@ namespace TravelRequirementApp.Repository
             Sweden.Add("Travel Visa Requirement", "Yes required");
             Sweden.Add("Destination", "Sweden");
         }
-       
-    
 
-        public DestinyInfoRepository()
+        public DestinyInfoRepository(string connection = "TravelRequirementApp.DestinationContext")
         {
             PopulateGermany();
             PopulateEngland();
             PopulateAustralia();
             PopulateSweden();
-            _dbContext = new DestinationContext();
+            PopulateItaly();
+            _dbContext = new DestinationContext(connection);
             _dbContext.Destinations.Load();
         }
 
@@ -87,7 +96,10 @@ namespace TravelRequirementApp.Repository
 
         public void Delete(DestinyInfo D)
         {
-            throw new NotImplementedException();
+           // var val = this.countries;
+           //_dbContext.Destinations.Remove(D);
+            //_dbContext.SaveChanges();
+            //throw new NotImplementedException();
         }
         
         public void Clear()
@@ -135,6 +147,8 @@ namespace TravelRequirementApp.Repository
                     return England;
                 case "Australia":
                     return Australia;
+                case "Italy":
+                    return Italy;
                 case "Sweden":
                     return Sweden;
             

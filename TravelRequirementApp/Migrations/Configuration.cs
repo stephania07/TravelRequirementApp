@@ -9,7 +9,7 @@ namespace TravelRequirementApp.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "TravelRequirementApp.DestinationContext";
         }
 
@@ -17,10 +17,10 @@ namespace TravelRequirementApp.Migrations
         {
             //  This method will be called after migrating to the latest version.
             context.Destinations.AddOrUpdate<Model.DestinyInfo>(
-                n => n.Destination,//ANY LINQ expression
-                new Model.DestinyInfo { Destination = "South Africa", CurrencyRestriction = "must be declared", PassportValidity="six month", TouristVisaRequirement="Not required", Vaccination="None"}
-
+                n => n.Destination,
+                new Model.DestinyInfo { Destination = "Thailand", CurrencyRestriction = "Not required", PassportValidity = "Six month from the date of entry", TouristVisaRequirement = "Not required for stay under 30days", Vaccination = "Yellow Fever may be required" }
                 );
+                
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
