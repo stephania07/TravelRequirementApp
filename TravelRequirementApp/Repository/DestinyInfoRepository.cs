@@ -96,12 +96,10 @@ namespace TravelRequirementApp.Repository
 
         public void Delete(DestinyInfo D)
         {
-           // var val = this.countries;
-           //_dbContext.Destinations.Remove(D);
-            //_dbContext.SaveChanges();
-            //throw new NotImplementedException();
+            _dbContext.Destinations.Remove(D);
+            _dbContext.SaveChanges();
         }
-        
+
         public void Clear()
         {
             var a = this.All();
@@ -115,24 +113,27 @@ namespace TravelRequirementApp.Repository
             var qu = from DestinyInfo in _dbContext.Destinations select DestinyInfo;
             return qu.ToList<Model.DestinyInfo>();
         }
-        public DestinyInfo GetById(int id)
+        public DestinyInfo GetById(int DestinyInfoId)
         {
-            var query = from DestinyInfo in _dbContext.Destinations
-                        where DestinyInfo.DestinyInfoId == id
-                        select DestinyInfo;
-            return query.First<Model.DestinyInfo>();
+            //experimenting other options
+            return _dbContext.Destinations.Find(DestinyInfoId);
+            //var query = from DestinyInfo in _dbContext.Destinations
+            //            where DestinyInfo.DestinyInfoId == DestinyInfoId
+            //            select DestinyInfo;
+            //return query.First<Model.DestinyInfo>();
         }
 
-        public Model.DestinyInfo GetByDestination(string destination)
+        public Model.DestinyInfo GetByDestination(string Destination)
         {
             var query = from DestinyInfo in _dbContext.Destinations
-                        where DestinyInfo.Destination == destination
+                        where DestinyInfo.Destination == Destination
                         select DestinyInfo;
             return query.First<Model.DestinyInfo>();
 
         }
+        
 
-        public void Dispose()
+       public void Dispose()
         {
             _dbContext.Dispose();
         }

@@ -14,6 +14,8 @@ namespace TravelRequirementApp
     {
         public static DestinyInfoRepository repo = new DestinyInfoRepository();
         private string countrieslist;
+        private string Destination;
+       
 
         public MainWindow()
         {
@@ -53,7 +55,7 @@ namespace TravelRequirementApp
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Cancel(object sender, RoutedEventArgs e)
         {
             TravelReqForm.Visibility = Visibility.Hidden;
             TravelList.Visibility = Visibility.Hidden;
@@ -61,6 +63,7 @@ namespace TravelRequirementApp
             CountriesList.Visibility = Visibility.Visible;
             SubmitButton.Visibility = Visibility.Visible;
             WorldMap.Visibility = Visibility.Visible;
+            ReminderNote.Visibility = Visibility.Collapsed;
         }
 
         
@@ -70,29 +73,45 @@ namespace TravelRequirementApp
             CountriesList.ItemsSource = repo.countries;
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void AddToList(object sender, RoutedEventArgs e)
          {
                 Dictionary<string, string> Countries = repo.GetDestinationInfo(CountriesList.SelectedValue.ToString());
                 TravelList.Visibility = Visibility.Visible;
                 TravelList.Items.Add(CountriesList.Text);
                 repo.Add(new DestinyInfo(CountriesList.Text, Countries["Passport Validity"], Countries["Currency Restriction"], Countries
                 ["Vaccination"], Countries["Travel Visa Requirement"]));
+                MessageBox.Show("Added to the Your travel list");
                 
           }
 
-        private void Delete(object seender, RoutedEventArgs e)
-        {
-            Dictionary<string, string> Countries = repo.GetDestinationInfo(CountriesList.SelectedValue.ToString());
-            TravelList.Items.Remove(CountriesList.Text);
-            repo.Delete(new DestinyInfo(CountriesList.Text, Countries["Passport Validity"], Countries["Currency Restriction"], Countries
-              ["Vaccination"], Countries["Travel Visa Requirement"]));
-
+        private void Delete(object sender, RoutedEventArgs e)
+        { 
+            var val = repo.GetByDestination(TravelList.SelectedValue.ToString());
+            repo.Delete(val);
+            TravelList.Items.Remove(TravelList.SelectedItem.ToString());           
         }
+        
 
         private void Edit(object sender, RoutedEventArgs e)
         {
+            Dictionary<string, string> Countries = repo.GetDestinationInfo(CountriesList.SelectedValue.ToString());
+            var reminder = TravelList.SelectedItem.ToString();
+            ReminderNote.Visibility = Visibility.Visible;
+            Note.AppendText(reminder);
+            //var val = repo.GetById(DestinyInfo.Id); 
+            //Note.TextInput(CountriesList.SelectedItem.ToString());
+      
 
         }
+
+        private void UpdateNote(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        
+
+       
 
         }
      

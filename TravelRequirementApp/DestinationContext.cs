@@ -15,6 +15,7 @@ namespace TravelRequirementApp
         
         }
 
-       public DbSet<DestinyInfo> Destinations {get; set;} 
+       public DbSet<DestinyInfo> Destinations {get; set;}
+      
     }
 }

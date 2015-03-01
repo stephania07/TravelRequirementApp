@@ -15,8 +15,8 @@ namespace TravelRequirementApp.Repository
         void Delete(DestinyInfo D);
         void Clear();
         IEnumerable<DestinyInfo> All();
-        DestinyInfo GetById(int id);
-        DestinyInfo GetByDestination(string destination);
+        DestinyInfo GetById(int DestinyInfoId);
+        DestinyInfo GetByDestination(string Destination);
        Dictionary<string, string> GetDestinationInfo(string country);
         
 

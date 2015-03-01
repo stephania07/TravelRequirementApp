@@ -70,6 +70,16 @@ namespace TravelRequirementAppTest
             repo.Clear();
             Assert.AreEqual(0, repo.GetCount());
         }
+
+        [TestMethod]
+        public void TestDelete()
+        {
+            Assert.AreEqual(1, repo.GetCount());
+            repo.Delete(new DestinyInfo("Germany", "Must be valid for three months", "10,000Euros", "Not required", "Not required"));
+            Assert.AreEqual(0, repo.GetCount());
+
+        }
+
         [ExpectedException(typeof(ArgumentException))]
         public void DestinationAreUnique()
         {
