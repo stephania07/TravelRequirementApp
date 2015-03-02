@@ -22,7 +22,9 @@ namespace TravelRequirementApp.Repository
             Germany.Add("Vaccination", "Not Required");
             Germany.Add("Currency Restriction", "10,000Euros");
             Germany.Add("Travel Visa Requirement", "Not required");
-            Germany.Add("Destination", "Germany");  
+            Germany.Add("Destination", "Germany");
+            Germany.Add("Note", " ");  
+
         }
         public Dictionary<string, string> England = new Dictionary<string, string>();
         private void PopulateEngland()
@@ -32,6 +34,8 @@ namespace TravelRequirementApp.Repository
             England.Add("Currency Restriction", "None");
             England.Add("Travel Visa Requirement", "Not required");
             England.Add("Destination", "England");
+            England.Add("Note", " ");  
+
         }
         public Dictionary<string, string> Australia = new Dictionary<string, string>();
         private void PopulateAustralia()
@@ -41,6 +45,8 @@ namespace TravelRequirementApp.Repository
             Australia.Add("Currency Restriction", "None");
             Australia.Add("Travel Visa Requirement", "Yes");
             Australia.Add("Destination", "Australia");
+            Australia.Add("Note", " ");  
+
         }
         public Dictionary<string, string> Italy = new Dictionary<string, string>();
         private void PopulateItaly()
@@ -50,6 +56,8 @@ namespace TravelRequirementApp.Repository
             Italy.Add("Currency Restriction", "10,000Euros or equivalent");
             Italy.Add("Travel Visa Requirement", "Not required");
             Italy.Add("Destination", "Italy");
+            Italy.Add("Note", " ");  
+
         }
 
         public Dictionary<string, string> Sweden = new Dictionary<string, string>();
@@ -60,6 +68,8 @@ namespace TravelRequirementApp.Repository
             Sweden.Add("Currency Restriction", "None");
             Sweden.Add("Travel Visa Requirement", "Yes required");
             Sweden.Add("Destination", "Sweden");
+            Sweden.Add("Note", " ");  
+
         }
 
         public DestinyInfoRepository(string connection = "TravelRequirementApp.DestinationContext")
@@ -69,7 +79,7 @@ namespace TravelRequirementApp.Repository
             PopulateAustralia();
             PopulateSweden();
             PopulateItaly();
-            _dbContext = new DestinationContext(connection);
+            _dbContext = new DestinationContext();
             _dbContext.Destinations.Load();
         }
 

@@ -16,9 +16,9 @@ namespace TravelRequirementApp.Migrations
         protected override void Seed(TravelRequirementApp.DestinationContext context)
         {
             //  This method will be called after migrating to the latest version.
-            context.Destinations.AddOrUpdate<Model.DestinyInfo>(
+                context.Destinations.AddOrUpdate<Model.DestinyInfo>(
                 n => n.Destination,
-                new Model.DestinyInfo { Destination = "Thailand", CurrencyRestriction = "Not required", PassportValidity = "Six month from the date of entry", TouristVisaRequirement = "Not required for stay under 30days", Vaccination = "Yellow Fever may be required" }
+                new Model.DestinyInfo { Destination = "Thailand", CurrencyRestriction = "Not required", PassportValidity = "Six month from the date of entry", TouristVisaRequirement = "Not required for stay under 30days", Vaccination = "Yellow Fever may be required", Note = " " }
                 );
                 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

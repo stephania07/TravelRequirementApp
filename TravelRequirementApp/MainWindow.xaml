@@ -50,8 +50,9 @@
             </StackPanel>
         </StackPanel>
         <StackPanel x:Name="ReminderNote" Visibility="Collapsed">
-        <TextBox x:Name="Note" HorizontalAlignment="Left" Height="84" Margin="237,435,0,0"  Text="Notes" VerticalAlignment="Top" Width="202"/>
-            <Button Height="20" Width="100" Margin="-200,-2,123,0" Click="UpdateNote" >Update</Button>
+            <TextBlock Height="20" Margin="194,390,871,-500" TextAlignment="Right" Text="Note:" FontWeight="Bold" FontStyle="Italic" FontFamily="Script MT Bold" FontSize="14"/>
+            <TextBox x:Name="Note" HorizontalAlignment="Left" Height="84" Margin="237,435,0,0"  Text="Notes" VerticalAlignment="Top" Width="202" FontStyle="Italic" FontWeight="Bold" FontFamily="Lucida Calligraphy"/>
+            <Button Height="20" Width="100" Margin="-200,-2,123,0" Click="UpdateDB" Content="Update" />
         </StackPanel>
-        </Grid>
+    </Grid>
 </Window>

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
 using TravelRequirementApp.Model;
 using TravelRequirementApp.Repository;
 
@@ -14,7 +12,7 @@ namespace TravelRequirementApp
     {
         public static DestinyInfoRepository repo = new DestinyInfoRepository();
         private string countrieslist;
-        private string Destination;
+       
        
 
         public MainWindow()
@@ -36,6 +34,7 @@ namespace TravelRequirementApp
             CurrRestriction.Text = Countries["Currency Restriction"];
             Vaccine.Text = Countries["Vaccination"];
             Visa.Text = Countries["Travel Visa Requirement"];
+            Note.Text = Countries["Note"];
         }
 
         private void submitButton_Click(object sender, RoutedEventArgs e)
@@ -79,7 +78,7 @@ namespace TravelRequirementApp
                 TravelList.Visibility = Visibility.Visible;
                 TravelList.Items.Add(CountriesList.Text);
                 repo.Add(new DestinyInfo(CountriesList.Text, Countries["Passport Validity"], Countries["Currency Restriction"], Countries
-                ["Vaccination"], Countries["Travel Visa Requirement"]));
+                ["Vaccination"], Countries["Travel Visa Requirement"], Countries["Note"]));
                 MessageBox.Show("Added to the Your travel list");
                 
           }
@@ -104,8 +103,11 @@ namespace TravelRequirementApp
 
         }
 
-        private void UpdateNote(object sender, RoutedEventArgs e)
+        private void UpdateDB(object sender, RoutedEventArgs e)
         {
+            //To be revised
+           var val =  repo.GetByDestination(Note.Text.ToString());
+           repo.Add(val);
             
         }
 

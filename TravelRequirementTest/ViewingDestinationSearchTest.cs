@@ -20,8 +20,8 @@ namespace TravelRequirementAppTest
         public void SetupTests()
         {
             GivenTheseSelectedDestinations(
-                new DestinyInfo("Australia", "six month visa", "must be declared", "None", "Yes"),
-                new DestinyInfo("France", "three month", "must be declared", "None", "Yes")
+                new DestinyInfo("Australia", "six month visa", "must be declared", "None", "Yes", " "),
+                new DestinyInfo("France", "three month", "must be declared", "None", "Yes", " ")
             );
             TestHelper.TestPrep();
         }

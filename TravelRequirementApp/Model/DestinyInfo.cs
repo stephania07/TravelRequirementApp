@@ -16,14 +16,13 @@ namespace TravelRequirementApp.Model
         public string PassportValidity { get; set; }
         public string CurrencyRestriction { get; set; }
         public string Vaccination { get; set; }
-        public string TouristVisaRequirement { get; set;}
-       
-        //public string AsofDate { get; set; }
+        public string TouristVisaRequirement { get; set; }
+        public string Note { get; set; }
 
         public DestinyInfo() 
         { //
         }
-        public DestinyInfo(string Destination, string PassportValidity, string CurrencyRestriction, string Vaccination, string TouristVisaRequirement)
+        public DestinyInfo(string Destination, string PassportValidity, string CurrencyRestriction, string Vaccination, string TouristVisaRequirement, string Note)
         {
             
             this.Destination = Destination;
@@ -31,7 +30,7 @@ namespace TravelRequirementApp.Model
             this.CurrencyRestriction = CurrencyRestriction;
             this.Vaccination = Vaccination;
             this.TouristVisaRequirement = TouristVisaRequirement;
-            //this.AsofDate = AsofDate;
+            this.Note = Note;
         }
     }
 }
