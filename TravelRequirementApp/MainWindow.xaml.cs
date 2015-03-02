@@ -96,7 +96,7 @@ namespace TravelRequirementApp
             Dictionary<string, string> Countries = repo.GetDestinationInfo(CountriesList.SelectedValue.ToString());
             var reminder = TravelList.SelectedItem.ToString();
             ReminderNote.Visibility = Visibility.Visible;
-            Note.AppendText(reminder);
+            Note.AppendText("Please add note here");
             //var val = repo.GetById(DestinyInfo.Id); 
             //Note.TextInput(CountriesList.SelectedItem.ToString());
       
@@ -105,10 +105,13 @@ namespace TravelRequirementApp
 
         private void UpdateDB(object sender, RoutedEventArgs e)
         {
-            //To be revised
-           var val =  repo.GetByDestination(Note.Text.ToString());
-           repo.Add(val);
-            
+            var val = Note.Text.ToString();
+            repo.UpDateDB(val, CountriesList.SelectedValue.ToString());
+        }
+
+        private void Note_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
         }
 
         

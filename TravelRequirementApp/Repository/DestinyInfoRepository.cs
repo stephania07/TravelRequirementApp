@@ -141,6 +141,15 @@ namespace TravelRequirementApp.Repository
             return query.First<Model.DestinyInfo>();
 
         }
+        public void UpDateDB(string p, string s) 
+        {
+            var query = from DestinyInfo in _dbContext.Destinations
+                        where DestinyInfo.Destination == s
+                        select DestinyInfo;
+            var selected = query.First<DestinyInfo>();
+            selected.Note = p;
+            _dbContext.SaveChanges();
+          }
         
 
        public void Dispose()
