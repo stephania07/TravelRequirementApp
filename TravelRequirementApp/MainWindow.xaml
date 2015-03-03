@@ -6,7 +6,7 @@
         <Image x:Name="WorldMap" Source="/Image/worldmap.jpg" Stretch="UniformToFill"/>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="207,0,205,12">
 
-            <TextBox Text="Travel Requirement"  IsReadOnly="true" Margin="0,3,0,2" TextAlignment="Center" Width="689" Height="25" x:Name="TitleBox" HorizontalAlignment="Left" FontWeight="Bold" FontSize="18" FontFamily="Lucida Calligraphy" Background="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" SelectionBrush="#FFACACF1" />
+            <TextBox Text="Travel Requirement"  IsReadOnly="true" Margin="0,3,0,2" TextAlignment="Center" Width="689" Height="45" x:Name="TitleBox" HorizontalAlignment="Left" FontWeight="Bold" FontSize="18" FontFamily="Lucida Calligraphy" Background="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" SelectionBrush="#FFACACF1" />
             <StackPanel x:Name="TravelReqForm" Width="687" Height="185" Margin="0,5,0,-8"  RenderTransformOrigin="0.499,0.478" Visibility="Hidden" >
                 <!--<TextBox Height="30" x:Name="DestinationList" Margin="10,0"/>-->
                 <Grid Grid.Column="2" Height="141" Margin="10,0">
@@ -39,7 +39,7 @@
                 <Button Height="19" Width="100" Margin="566,-22,10,0" Click="Cancel">Back</Button>
 
             </StackPanel>
-            <ListBox x:Name="TravelList" Height="150" Width="660">
+            <ListBox x:Name="TravelList" Height="150" Width="660" Visibility="Hidden">
                 <Button Height="19" Width="100" Margin="350,-2,123,0" Click="Edit">Edit</Button>
                 <Button Height="19" Width="100" Margin="450,-19,123,0" Click="Delete">Delete</Button>
                 <Button x:Name="show" Height="20" Width="100" Margin="550,-20,123,0" Click="ShowAllTravelList"  Content="ShowAllTravelList" />
@@ -50,7 +50,7 @@
                 <Button x:Name="SubmitButton" Width="142" Margin="10,135,0,20" Click="submitButton_Click" Content="Go" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" BorderBrush="#FFE2EDF5" FontWeight="Bold" FontSize="18" FontFamily="Lucida Calligraphy" RenderTransformOrigin="0.5,0.5"/>
             </StackPanel>
         </StackPanel>
-        <StackPanel x:Name="ReminderNote">
+        <StackPanel x:Name="ReminderNote" Visibility="Collapsed">
             <TextBox x:Name="Note" HorizontalAlignment="Left" Height="99" Margin="886,435,0,0"  Text="Notes" VerticalAlignment="Top" Width="174" FontStyle="Italic" FontWeight="Bold" FontFamily="Lucida Calligraphy"/>
             <TextBlock Height="20" Margin="194,390,871,-500" TextAlignment="Right" Text="Note:" FontWeight="Bold" FontStyle="Italic" FontFamily="Script MT Bold" FontSize="14"/>
             <Button Height="20" Margin="962,-2,41,0" Click="UpdateDB" Content="Update" />
