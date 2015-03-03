@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using System.Windows;
 using TravelRequirementApp.Model;
 using TravelRequirementApp.Repository;
@@ -79,8 +80,7 @@ namespace TravelRequirementApp
                 TravelList.Items.Add(CountriesList.Text);
                 repo.Add(new DestinyInfo(CountriesList.Text, Countries["Passport Validity"], Countries["Currency Restriction"], Countries
                 ["Vaccination"], Countries["Travel Visa Requirement"], Countries["Note"]));
-                MessageBox.Show("Added to the Your travel list");
-                
+               
           }
 
         private void Delete(object sender, RoutedEventArgs e)
@@ -96,29 +96,25 @@ namespace TravelRequirementApp
             Dictionary<string, string> Countries = repo.GetDestinationInfo(CountriesList.SelectedValue.ToString());
             var reminder = TravelList.SelectedItem.ToString();
             ReminderNote.Visibility = Visibility.Visible;
-            Note.AppendText("Please add note here");
-            //var val = repo.GetById(DestinyInfo.Id); 
-            //Note.TextInput(CountriesList.SelectedItem.ToString());
-      
-
+            Note.Text = "Please add note here";
         }
 
         private void UpdateDB(object sender, RoutedEventArgs e)
         {
             var val = Note.Text.ToString();
             repo.UpDateDB(val, CountriesList.SelectedValue.ToString());
-        }
-
-        private void Note_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-
+            ReminderNote.Visibility = Visibility.Collapsed;           
         }
 
         
 
-       
+        private void ShowAllTravelList(object sender, RoutedEventArgs e)
+        {
+           
+            loadlist.ItemsSource = repo.Context().Destinations.Local;
+        }
 
         }
-     
+    
  }
 

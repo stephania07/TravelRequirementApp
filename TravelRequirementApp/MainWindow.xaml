@@ -36,12 +36,13 @@
                     <DatePicker x:Name="Date" Margin="2" Grid.Row="5" Grid.Column="1"/>-->
                 </Grid>
                 <Button Height="19" Width="100" Margin="459,-2,123,0" Click="AddToList">AddToList</Button>
-                <Button Height="18" Width="100" Margin="566,-22,10,0" Click="Cancel">Cancel</Button>
+                <Button Height="19" Width="100" Margin="566,-22,10,0" Click="Cancel">Back</Button>
 
             </StackPanel>
-            <ListBox x:Name="TravelList" Height="150" Width="660" Visibility="Hidden">
-                <Button Height="19" Width="100" Margin="450,-2,123,0" Click="Edit">Edit</Button>
-                <Button Height="19" Width="100" Margin="550,-19,123,0" Click="Delete">Delete</Button>
+            <ListBox x:Name="TravelList" Height="150" Width="660">
+                <Button Height="19" Width="100" Margin="350,-2,123,0" Click="Edit">Edit</Button>
+                <Button Height="19" Width="100" Margin="450,-19,123,0" Click="Delete">Delete</Button>
+                <Button x:Name="show" Height="20" Width="100" Margin="550,-20,123,0" Click="ShowAllTravelList"  Content="ShowAllTravelList" />
             </ListBox>
             <StackPanel HorizontalAlignment="Center" Width="689" VerticalAlignment="Center" Height="200" Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
                 <Label x:Name="DestinationsLabel" Margin="10,135,10,20"  Width="202" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" FontSize="18" FontWeight="Bold" HorizontalAlignment="Right" FontFamily="Lucida Calligraphy" Content="Destination"/>
@@ -49,10 +50,13 @@
                 <Button x:Name="SubmitButton" Width="142" Margin="10,135,0,20" Click="submitButton_Click" Content="Go" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" BorderBrush="#FFE2EDF5" FontWeight="Bold" FontSize="18" FontFamily="Lucida Calligraphy" RenderTransformOrigin="0.5,0.5"/>
             </StackPanel>
         </StackPanel>
-        <StackPanel x:Name="ReminderNote" Visibility="Collapsed">
+        <StackPanel x:Name="ReminderNote">
+            <TextBox x:Name="Note" HorizontalAlignment="Left" Height="99" Margin="886,435,0,0"  Text="Notes" VerticalAlignment="Top" Width="174" FontStyle="Italic" FontWeight="Bold" FontFamily="Lucida Calligraphy"/>
             <TextBlock Height="20" Margin="194,390,871,-500" TextAlignment="Right" Text="Note:" FontWeight="Bold" FontStyle="Italic" FontFamily="Script MT Bold" FontSize="14"/>
-            <TextBox x:Name="Note" HorizontalAlignment="Left" Height="84" Margin="237,435,0,0"  Text="Notes" VerticalAlignment="Top" Width="202" FontStyle="Italic" FontWeight="Bold" FontFamily="Lucida Calligraphy"/>
-            <Button Height="20" Width="100" Margin="-200,-2,123,0" Click="UpdateDB" Content="Update" />
+            <Button Height="20" Margin="962,-2,41,0" Click="UpdateDB" Content="Update" />
         </StackPanel>
+        <!--<ListBox x:Name="AllTravelList" Height="113" Margin="866,0,20,0" ItemsSource="{Binding}">
+        </ListBox>-->
+        <DataGrid x:Name="loadlist" AutoGenerateColumns="True" HorizontalAlignment="Left" Height="127" Margin="222,411,0,0" VerticalAlignment="Top" Width="657"/>
     </Grid>
 </Window>
