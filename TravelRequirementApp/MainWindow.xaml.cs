@@ -64,6 +64,8 @@ namespace TravelRequirementApp
             SubmitButton.Visibility = Visibility.Visible;
             WorldMap.Visibility = Visibility.Visible;
             ReminderNote.Visibility = Visibility.Collapsed;
+            loadlist.Visibility = Visibility.Hidden;
+           
         }
 
         
@@ -80,14 +82,16 @@ namespace TravelRequirementApp
                 TravelList.Items.Add(CountriesList.Text);
                 repo.Add(new DestinyInfo(CountriesList.Text, Countries["Passport Validity"], Countries["Currency Restriction"], Countries
                 ["Vaccination"], Countries["Travel Visa Requirement"], Countries["Note"]));
-               
+                loadlist.Visibility = Visibility.Hidden;
+                           
           }
 
         private void Delete(object sender, RoutedEventArgs e)
         { 
             var val = repo.GetByDestination(TravelList.SelectedValue.ToString());
             repo.Delete(val);
-            TravelList.Items.Remove(TravelList.SelectedItem.ToString());           
+            TravelList.Items.Remove(TravelList.SelectedItem.ToString());
+            loadlist.Visibility = Visibility.Hidden;
         }
         
 
@@ -97,21 +101,24 @@ namespace TravelRequirementApp
             var reminder = TravelList.SelectedItem.ToString();
             ReminderNote.Visibility = Visibility.Visible;
             Note.Text = "Please add note here";
+            loadlist.Visibility = Visibility.Hidden;
         }
 
         private void UpdateDB(object sender, RoutedEventArgs e)
         {
             var val = Note.Text.ToString();
             repo.UpDateDB(val, CountriesList.SelectedValue.ToString());
-            ReminderNote.Visibility = Visibility.Collapsed;           
+            ReminderNote.Visibility = Visibility.Collapsed;
+            loadlist.Visibility = Visibility.Hidden;
         }
 
         
 
         private void ShowAllTravelList(object sender, RoutedEventArgs e)
         {
-           
+            loadlist.Visibility = Visibility.Visible;
             loadlist.ItemsSource = repo.Context().Destinations.Local;
+            loadlist.Items.Refresh();
         }
 
         }
